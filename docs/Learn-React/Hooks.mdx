@@ -1,0 +1,142 @@
+---
+sidebar_position: 3
+---
+
+# Hooks
+
+## useState
+
+React Hooks is a way to use state and other React features without writing a class component. Here are the steps to use React Hooks in a functional component:
+
+```jsx title="App.js"
+// Import the useState hook from the react package:
+import React, { useState } from "react";
+
+// Declare state variables using the useState hook:
+const [count, setCount] = useState(0);
+
+function MyComponent() {
+  return (
+    <div>
+      {/* Use the state variable in your component: */}
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+
+This component declares a state variable count and a function setCount to update it. It uses them to display the number of times a button has been clicked. When the button is clicked, the count state variable is updated and the component is re-rendered with the new value.
+
+## useEffect
+
+The useEffect hook in React is used to manage side effects in functional components. Side effects are any operations that affect something outside the scope of the component, such as fetching data from an API, setting timers, or modifying the DOM.
+
+Here are the steps to use useEffect in a functional component:
+
+### **`useEffect`** with Empty array []
+
+```jsx title="App.js"
+// Import the useEffect hook from the react package:
+import React, { useState, useEffect } from "react";
+
+function MyComponent() {
+  // Declare state variables using the useState hook:
+  const [data, setData] = useState("Initial Data");
+
+  // Use the useEffect hook to manage side effects:
+  useEffect(() => {
+    setData("Changed Data After Dom loaded.");
+  }, []);
+
+  return (
+    <div>
+      <p>{data}</p>
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+
+---
+
+:::info
+
+```jsx
+useEffect(() => {
+  setData("Changed Data After Dom loaded.");
+}, []);
+```
+
+This code uses the **`useEffect`** hook to update the data state variable when the component mounts. The "**empty array []**" as the second argument of the **`useEffect`** hook means that **this effect should only run once**, when the component mounts. If you want the effect to run when a specific prop or state variable changes, you can pass it as a dependency array instead.
+:::
+
+### **`useEffect`** with arguments in array:
+
+```jsx title="App.js"
+// Import the useEffect hook from the react package:
+import React, { useState, useEffect } from "react";
+
+function MyComponent() {
+  // Declare state variables using the useState hook:
+  const [check, setCheck] = useState(true);
+  const [count, setCount] = useState(0);
+
+  // Use the useEffect hook to manage side effects:
+  useEffect(() => {
+    setCount(count + 1);
+  }, [check]);
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCheck(!check)}>Click me</button>
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+Whenever the state of **check** variable changes it effects the **`useEffect`** function and update the **Count** variable.
+
+Here's the **Live demo** of above example:
+
+
+import { Example1 } from "./demo";
+
+---
+
+<Example1></Example1>
+
+---
+
+### **`useEffect`** with no arguments:
+
+```jsx title="App.js"
+// Import the useEffect hook from the react package:
+import React, { useState, useEffect } from "react";
+
+export function Example2() {
+  // Declare state variables using the useState hook:
+  const [check, setCheck] = useState(true);
+  const [count, setCount] = useState(0);
+
+  // Use the useEffect hook to manage side effects:
+  useEffect(() => {
+    setCount(count + 1);
+  });
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCheck(!check)}>Click1</button>
+      <button onClick={() => setCheck(!check)}>Click2</button>
+    </div>
+  );
+}
+```
+
+This useEffect function will run on every render time , this means it will looks like a stopwatch running copy the code try it yourself.
