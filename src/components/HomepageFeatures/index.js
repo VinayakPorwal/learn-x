@@ -1,11 +1,13 @@
 import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import imgxy from "../../../static/img/hi5.jpg"
 
 const FeatureList = [
   {
     title: "Easy to Understand",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    // Src: "none",
+    Svg: require("@site/static/img/Success.svg").default,
     description: (
       <>
         Learn-X is a beginner-friendly platform that focuses on practical
@@ -15,7 +17,8 @@ const FeatureList = [
   },
   {
     title: "Focus more on Code",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+    // Src: "../../../../static/img/xy.svg",
+    Svg: require("@site/static/img/xy.svg").default,
     description: (
       <>
         Learn-x lets you focus on concepts with code, and we&apos;ll do the
@@ -25,7 +28,8 @@ const FeatureList = [
   },
   {
     title: "Access from anywhere",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    // Src: "imgxy",
+    Svg: require("@site/static/img/afa.svg").default,
     description: (
       <>
         Responsive and user friendly layout resulting more Comfort to read all
@@ -35,11 +39,15 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ Src, Svg, title, description }) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {Src? (
+          <img src={imgxy} className={styles.featureSvg} />
+        ) : (
+          <Svg className={styles.featureSvg} role="img" />
+        )}
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

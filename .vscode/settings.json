@@ -1,3 +1,7 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "code-runner.runInTerminal": true,
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
+    }
 }
